@@ -193,7 +193,11 @@ _V_.html5.isSupported = function(){
 };
 
 _V_.html5.canPlaySource = function(srcObj){
-  return !!document.createElement("video").canPlayType(srcObj.type);
+  try {
+    return !!document.createElement("video").canPlayType(srcObj.type);
+  } catch(err) {
+    return false;
+  }
   // TODO: Check Type
   // If no Type, check ext
   // Check Media Type
